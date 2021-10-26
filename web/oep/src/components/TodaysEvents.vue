@@ -30,8 +30,8 @@ export default {
           to:'gilde',
           stroke: 'yellow',
           timeFrame:{
-            from: new Date(2021, 9, 8, 14, 30),
-            to: new Date(2021, 9, 8, 18, 0)
+            from: new Date(2021, 9, 13, 14, 30),
+            to: new Date(2021, 9, 13, 18, 0)
           }
         },
         {
@@ -39,8 +39,8 @@ export default {
           to:'training',
           stroke: 'red',
           timeFrame:{
-            from: new Date(2021, 9, 8, 20, 30),
-            to: new Date(2021, 9, 8, 22, 0)
+            from: new Date(2021, 9, 13, 20, 30),
+            to: new Date(2021, 9, 13, 22, 0)
           }
         },
         {
@@ -48,8 +48,8 @@ export default {
           to:'dealine',
           stroke: 'green',
           timeFrame:{
-            from: new Date(2021, 9, 8, 18, 0),
-            to: new Date(2021, 9, 8, 18, 0)
+            from: new Date(2021, 9, 13, 18, 0),
+            to: new Date(2021, 9, 13, 18, 0)
           }
         },
       ]

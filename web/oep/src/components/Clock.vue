@@ -2,7 +2,9 @@
   <svg viewBox="0 0 100 100">
     <circle cx="50" cy="50" r="40"/>
     <line id="bigLine" x1="50" y1="50" :x2="big.x" :y2="big.y" :key="big" stroke="black" />
+
     <line id="smallLine" x1="50" y1="50" :x2="small.x" :y2="small.y" :key="small" stroke="red" />
+    <circle cx="50" cy="50" r="40" stroke="black" stroke-width="0" fill="red !important" />
   </svg>
 </template>
 

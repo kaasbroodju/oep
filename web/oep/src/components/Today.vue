@@ -8,17 +8,13 @@
       <div style="width: 80vw">
         <todays-events />
       </div>
-
-
     </div>
-
   </div>
-
   <div>
-
+    <h1>classes today:</h1>
+    <todays-classes />
   </div>
-  <h2>classes today:</h2>
-  <todays-classes />
+
 </template>
 
 <script>

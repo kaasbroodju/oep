@@ -1,8 +1,8 @@
 <template>
-  <div class="classWrapper">
+  <div class="classWrapper" skiplinkable>
     <router-link to="/classes">
-      <img src="@/assets/duits.png">
-      <h2>duits</h2>
+      <img src="@/assets/duits.png" alt="">
+      <h2 tabindex="0">duits</h2>
     </router-link>
   </div>
 </template>

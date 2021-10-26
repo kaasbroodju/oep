@@ -1,11 +1,12 @@
 <template>
-  <nav>
+  <nav id="navbar">
     <ul>
-      <li><router-link to="/"><img src="@/assets/logo.svg" tabindex="0" alt="home"></router-link></li>
+      <li><router-link to="/"><p tabindex="0"><img src="@/assets/logo.svg" alt="home"></p></router-link></li>
 
       <li v-for="link in links" :key="link">
-        <router-link v-bind:to="link.to" onfocus="console.log('hey')">{{link.text}}</router-link>
+        <router-link v-bind:to="link.to" onfocus="console.log('hey')"><p tabindex="0">{{link.text}}</p></router-link>
       </li>
+      <li><p>example student</p><img src="@/assets/user.png" alt="home"></li>
     </ul>
   </nav>
 </template>
@@ -32,9 +33,26 @@ nav {
 
   li {
     float: left;
-    &:first-child a {
+    height: 4em;
+    display: flex;
+    &:first-child {
+      height: 2em;
       padding: 0 0.5em;
-      background: inherit !important;
+      a {
+        height: 100%;
+        padding: 0;
+        background-color: unset !important;
+        p {
+          font-size: initial;
+        }
+      }
+    }
+    &:last-child {
+      float: right;
+      p {
+        font-size: 2em;
+        margin: 0.5em;
+      }
     }
     a {
       display: flex;
@@ -43,16 +61,19 @@ nav {
       padding: 0.5em;
       font-size: 2em;
       text-decoration: none;
-      &:hover, &:focus, &:active {
+      p {
+        margin: 0;
+      }
+      &:hover, &:focus-within, &:active {
         background-color: @primary-colour-hover;
       }
       &[aria-current="page"] {
         background: @primary-colour-hover;
       }
     }
-  }
-  img {
-    height: 2.158em;
+    img {
+      height: 4em;
+    }
   }
 }
 </style>
