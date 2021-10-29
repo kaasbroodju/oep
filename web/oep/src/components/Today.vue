@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="today" skip-link-title="today">
     <h1>today:</h1>
-    <div id="today">
+    <div class="todayEvents">
       <div style="width: 20vw">
         <Clock />
       </div>
@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <div>
+  <div id="todaysClasses" skip-link-title="today's classes">
     <h1>classes today:</h1>
     <todays-classes />
   </div>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-  #today {
+  .todayEvents {
     display: inline;
     > div {
       display: inline-block;

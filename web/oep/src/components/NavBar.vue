@@ -1,5 +1,5 @@
 <template>
-  <nav id="navbar">
+  <nav id="navbar" skip-link-title="navigation bar">
     <ul>
       <li><router-link to="/"><p tabindex="0"><img src="@/assets/logo.svg" alt="home"></p></router-link></li>
 

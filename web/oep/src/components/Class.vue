@@ -1,15 +1,18 @@
 <template>
-  <div class="classWrapper" skiplinkable>
-    <router-link to="/classes">
+  <div class="classWrapper">
+    <router-link :to="'/class/' + className">
       <img src="@/assets/duits.png" alt="">
-      <h2 tabindex="0">duits</h2>
+      <h2 tabindex="0">{{ className }}</h2>
     </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Class"
+  name: "Class",
+  props: {
+    className: String
+  }
 }
 </script>
 

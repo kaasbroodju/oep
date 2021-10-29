@@ -16,6 +16,17 @@ const routes = [
     path: '/classes',
     name: 'Classes',
     component: () => import('../views/Classes.vue')
+  },
+  {
+    path: '/class/:className',
+    name: 'Class',
+    component: () => import('../views/Class.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../views/classviews/ClassHomepage')
+      }
+    ]
   }
 ]
 

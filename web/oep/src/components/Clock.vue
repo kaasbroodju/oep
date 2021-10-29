@@ -16,12 +16,12 @@ export default {
       big: {
         x:50,
         y:50,
-        size: 40
+        size: 35
       },
       small: {
         x:50,
         y:50,
-        size: 30
+        size: 27.5
       },
     }
   },

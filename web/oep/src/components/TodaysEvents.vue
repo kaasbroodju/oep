@@ -1,5 +1,5 @@
 <template>
-  <svg width="80vw" height="288px">
+  <svg width="80%" height="288px">
     <event v-for="item in items"
            :title="item.title"
            :to="item.to"
@@ -30,8 +30,8 @@ export default {
           to:'gilde',
           stroke: 'yellow',
           timeFrame:{
-            from: new Date(2021, 9, 13, 14, 30),
-            to: new Date(2021, 9, 13, 18, 0)
+            from: new Date(2021, 9, 29, 14, 30),
+            to: new Date(2021, 9, 29, 18, 0)
           }
         },
         {
@@ -39,8 +39,8 @@ export default {
           to:'training',
           stroke: 'red',
           timeFrame:{
-            from: new Date(2021, 9, 13, 20, 30),
-            to: new Date(2021, 9, 13, 22, 0)
+            from: new Date(2021, 9, 29, 20, 30),
+            to: new Date(2021, 9, 29, 22, 0)
           }
         },
         {
@@ -48,8 +48,8 @@ export default {
           to:'dealine',
           stroke: 'green',
           timeFrame:{
-            from: new Date(2021, 9, 13, 18, 0),
-            to: new Date(2021, 9, 13, 18, 0)
+            from: new Date(2021, 9, 29, 18, 0),
+            to: new Date(2021, 9, 29, 18, 0)
           }
         },
       ]

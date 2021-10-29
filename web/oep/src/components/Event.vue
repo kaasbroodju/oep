@@ -34,7 +34,6 @@ export default {
   beforeCreate() {
     this.width = (this.timeFrame.to - this.timeFrame.from) * 12.5 / 3600000
     this.x = (this.timeFrame.from - new Date()) * 12.5 / 3600000
-    console.log(this.width)
   },
   mounted() {
     this.interval = setInterval(this.updateCurrentTime, 10000);

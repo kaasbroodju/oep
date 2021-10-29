@@ -1,11 +1,11 @@
 <template>
-  <div id="todaysClasses">
-    <class />
-    <class />
-    <class />
-    <class />
-    <class />
-    <class />
+  <div>
+    <class class-name="duits"/>
+    <class class-name="frans"/>
+    <class class-name="wiskunde"/>
+    <class class-name="nederlands"/>
+    <class class-name="test"/>
+    <class class-name="hutspot"/>
   </div>
 
 </template>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-  #todaysClasses {
+  #div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

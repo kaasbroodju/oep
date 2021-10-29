@@ -14,6 +14,7 @@ export default {
   components: {AutoSkipLinks, NavBar},
   data() {
     return {
+      localOEPName: 'oep',
       links: [
         {to: '/classes', text: 'classes'},
         {to: '/grades', text: 'grades'},

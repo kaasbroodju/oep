@@ -1,13 +1,11 @@
 <template>
   <rect
-      stroke="gray"
-      fill="darkgrey"
+      tabindex="0"
       :x="this.x + '%'"
       y="0"
       height="100%"
       :width="this.width + '%'"
       :key="this.x"
-      opacity="0.25"
   />
   <text
       :x="this.calcPositionXText() + '%'"
@@ -54,5 +52,13 @@ export default {
 <style scoped lang="less">
 text {
   dominant-baseline: central;
+}
+rect {
+  stroke: gray;
+  fill: darkgray;
+  opacity: 0.25;
+  &:hover, &:focus-within, &:active {
+    opacity: 0.50;
+  }
 }
 </style>
