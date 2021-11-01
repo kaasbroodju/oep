@@ -1,6 +1,6 @@
 <template>
   <div>
-    <class-nav-bar />
+    <class-nav-bar id="class-navigation" skip-link-title="class navigation bar"/>
     <router-view />
   </div>
 </template>

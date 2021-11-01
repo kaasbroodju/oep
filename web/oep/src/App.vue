@@ -21,6 +21,11 @@ export default {
         {to: '/', text: 'email'}
       ]
     }
+  },
+  watch: {
+    routing(to, from) {
+      console.log(to, from)
+    }
   }
 }
 </script>

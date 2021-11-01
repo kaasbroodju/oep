@@ -1,6 +1,6 @@
 <template>
   <div id="classes" skip-link-title="classes">
-    <class v-for="index in 10" :key="index" :class-name="index"/>
+    <class v-for="index in 10" :key="index" :class-name="String(index)"/>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ol>
-      <router-link to="/class/1">classname</router-link>
+      <router-link :to="`/class/${this.$route.params.className}`">{{ this.$route.params.className }}</router-link>
     </ol>
   </nav>
 </template>

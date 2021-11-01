@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-  #div {
+  div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
