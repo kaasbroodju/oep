@@ -1,4 +1,3 @@
-
 export const modroutes = [
     {
         path: '/mod',
@@ -6,4 +5,3 @@ export const modroutes = [
         component: () => import('./Mod.vue')
     }
 ]
-

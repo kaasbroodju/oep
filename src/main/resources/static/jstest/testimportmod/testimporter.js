@@ -1,4 +1,4 @@
-import {modroutes} from "@/testimportmod/modRoute";
+import {modroutes} from "./modRoute.js";
 
 export function importmod(main) {
     modroutes.forEach(
