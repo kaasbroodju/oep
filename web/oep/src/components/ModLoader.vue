@@ -1,28 +1,26 @@
 <template>
-  <component
-      v-bind:is="'script'"
-      src="/api/js/testimportmod/testimporter.js"
-      defer="'defer'"
-      type="module"
-      async>
-  </component>
+  <div/>
 </template>
 
 
 <script>
+// import app from "@/main";
+
 export default {
   name: "ModLoader",
-  methods: {
-    loadMod(callback) {
-      callback.call(this, this.$root)
+  data() {
+    return {
+      mods: [
+        {name:'/api/js/testimportmod/testimporter.js'}
+      ]
     }
   },
   created() {
-    window.loadMod = this.loadMod
+    // import(/*webpackIgnore: true*/ '/api/js/testimportmod/testimporter.js')
+    //     .then(mod => {
+    //       app.use(mod.default, {root:this.$root})
+    //     })
   }
-}
-window.loadme = (callbackFunction) => {
-  callbackFunction.call(this, window.modloader.$root)
 }
 </script>
 
