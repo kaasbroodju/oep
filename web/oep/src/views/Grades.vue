@@ -1,5 +1,5 @@
 <template>
-  <p>hello world</p>
+  <p>grades</p>
 </template>
 
 <script>
