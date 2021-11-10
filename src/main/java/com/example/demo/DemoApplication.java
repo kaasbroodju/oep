@@ -6,14 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Enumeration;
+import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Stream;
@@ -22,29 +20,47 @@ import java.util.stream.Stream;
 @ComponentScan(basePackages = {"com.example.demo.*"})
 public class DemoApplication extends SpringBootServletInitializer {
 
+    private static final String copiedDirectory = "static/";
+    private static final String dest = "./web/oep/mods";
+    private static final String infoFileName = "/info.txt";
+    private static final String jarDirectory = "./jars";
+
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        loadMod("../demo1/out/artifacts/demo1_jar/demo1.jar");
+        try {
+            loadMods();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private static void loadMod(String locationJar) {
-        String dest = "./web/oep/mods";
+    private static void loadMods() throws IOException {
+        try (Stream<Path> paths = Files.walk(Paths.get(jarDirectory))) {
+            paths
+                    .filter(path -> path.toString().endsWith(".jar"))
+                    .forEach(path -> extractJar(path.toString()));
+        }
+    }
+
+    private static void extractJar(String source) {
         try {
-            JarFile jar = new JarFile(locationJar);
+            JarFile jar = new JarFile(source);
             Enumeration<JarEntry> enumEntries = jar.entries();
+            if (!isNewVersion(jar)) return; // Do not overwrite files if there's no new version.
             while (enumEntries.hasMoreElements()) {
                 JarEntry file = enumEntries.nextElement();
-                File f = new File(dest + File.separator + file.getName());
-                if (!(dest + File.separator + file.getName()).contains("static")) continue;
-                System.out.println(dest + File.separator + file.getName());
-                if (file.isDirectory()) { // if its a directory, create it
+                if (!file.getName().contains(copiedDirectory)) continue;
+                System.out.println(file.getName());
+                File f = new File(dest + File.separator + file.getName().substring(copiedDirectory.length()));
+                if (file.isDirectory()) {
                     f.mkdir();
                     continue;
+                } else {
+                    f.getParentFile().mkdirs();
                 }
-                f.getParentFile().mkdirs();
-                InputStream is = jar.getInputStream(file); // get the input stream
+                InputStream is = jar.getInputStream(file);
                 FileOutputStream fos = new FileOutputStream(f);
-                while (is.available() > 0) {  // write contents of 'is' to 'fos'
+                while (is.available() > 0) {
                     fos.write(is.read());
                 }
                 fos.close();
@@ -55,4 +71,37 @@ public class DemoApplication extends SpringBootServletInitializer {
             e.printStackTrace();
         }
     }
-}
+
+    private static boolean isNewVersion(JarFile jar) throws IOException {
+        String dir = getInfoFileDirectory(jar) + infoFileName;
+        String jarVersion = getVersion(jar.getInputStream(jar.getEntry(copiedDirectory + dir)));
+        String localVersion = "";
+        try {
+            localVersion = getVersion(new FileInputStream(dest + dir));
+        } catch (FileNotFoundException fnfe) {
+            return true;
+        }
+        return !jarVersion.equals(localVersion);
+    }
+
+    private static String getVersion(InputStream is) {
+        Scanner myReader = new Scanner(is);
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            if (data.startsWith("Version:")) return data.substring(data.indexOf(":")+1);
+        }
+        myReader.close();
+        return "";
+    }
+
+    private static String getInfoFileDirectory(JarFile jarFile) {
+        Enumeration<JarEntry> enumEntries = jarFile.entries();
+        while (enumEntries.hasMoreElements()) {
+            JarEntry file = enumEntries.nextElement();
+
+            if (!file.getName().contains(copiedDirectory)) continue;
+            if (!file.getName().endsWith(infoFileName)) continue;
+            return file.getName().substring(copiedDirectory.length(), file.getName().length() - infoFileName.length());
+        }
+        return null;
+    }}
