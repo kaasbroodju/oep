@@ -34,8 +34,8 @@ build/
 
 web/oep/node_modules
 # Upload mods directory to Github with no content
-web/oep/mods/
-!web/oep/mods/.gitkeep
+/web/oep/mods/
+!/web/oep/mods/.gitkeep
 # Upload jar directory to Github with no content
-jars/
-!jars/.gitkeep
+/jars/
+!/jars/.gitkeep
