@@ -33,5 +33,9 @@ build/
 .vscode/
 
 web/oep/node_modules
-web/oep/mods
+# Upload mods directory to Github with no content
+web/oep/mods/
+!web/oep/mods/.gitkeep
+# Upload jar directory to Github with no content
 jars/
+!jars/.gitkeep
