@@ -1,12 +1,27 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import * as idk from '../mods/static/mod/src/main';
+import {createRouter, createWebHistory} from "vue-router";
+import routes from './router/index'
 
-const app  = createApp(App)
-app.use(router)
+async function main() {
+    const app = createApp(App);
+    const routeArray = await createRouterArray()
+    app.use(createRouteWithRouting(routeArray))
+    const mounted = app.mount('#app');
+    import('../mods/mod/src/main').then(router => app.use(router.default, {root:mounted.$root}))
+}
 
-const root = app.mount('#app')
-app.use(idk.default, {root:root.$root})
+async function createRouterArray() {
+    let mainRoutes = [...routes];
+    await import('../mods/mod/src/main').then(router => mainRoutes = router.default.routing(mainRoutes))
+    return mainRoutes;
+}
 
-export default app
+function createRouteWithRouting(routes) {
+    return createRouter({
+        history: createWebHistory(process.env.BASE_URL),
+        routes
+    })
+}
+
+main();
