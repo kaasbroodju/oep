@@ -18,7 +18,7 @@ public class ModLoader {
 
     private static final Logger logger = LoggerFactory.getLogger(ModLoader.class);
     private static final String copiedDirectory = "static/";
-    private static final String dest = "./web/oep/mods";
+    private static final String dest = "./web/oep/mods/";
     private static final String infoFileName = "/info.txt";
     private static final String jarDirectory = "./jars";
 
@@ -35,6 +35,7 @@ public class ModLoader {
             JarFile jar = new JarFile(source);
             Enumeration<JarEntry> enumEntries = jar.entries();
             if (!isNewVersion(jar)) return; // Do not overwrite files if there's no new version.
+            logger.info("Detected a new version or a new jar of " + getInfoFileDirectory(jar) + " copying front-end to mod directory");
             while (enumEntries.hasMoreElements()) {
                 JarEntry file = enumEntries.nextElement();
                 if (!file.getName().contains(copiedDirectory)) continue;
