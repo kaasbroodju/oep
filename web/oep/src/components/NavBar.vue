@@ -4,7 +4,7 @@
       <li><router-link to="/"><p tabindex="0"><img src="@/assets/logo.svg" alt="home"></p></router-link></li>
 
       <li v-for="link in links" :key="link">
-        <router-link v-bind:to="link.to" onfocus="console.log('hey')"><p tabindex="0">{{link.text}}</p></router-link>
+        <router-link v-bind:to="link.to"><p tabindex="0">{{link.text}}</p></router-link>
       </li>
       <li><p>example student</p><img src="@/assets/user.png" alt="home"></li>
     </ul>

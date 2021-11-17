@@ -30,8 +30,8 @@ export default {
           to:'/class/gilde',
           stroke: 'yellow',
           timeFrame:{
-            from: new Date(2021, 10, 4, 14, 30),
-            to: new Date(2021, 10, 4, 18, 0)
+            from: new Date(2021, new Date().getMonth(), new Date().getDate(), 14, 30),
+            to: new Date(2021, new Date().getMonth(), new Date().getDate(), 18, 0)
           }
         },
         {
@@ -39,8 +39,8 @@ export default {
           to:'/class/training',
           stroke: 'red',
           timeFrame:{
-            from: new Date(2021, 10, 4, 20, 30),
-            to: new Date(2021, 10, 4, 22, 0)
+            from: new Date(2021, new Date().getMonth(), new Date().getDate(), 20, 30),
+            to: new Date(2021, new Date().getMonth(), new Date().getDate(), 22, 0)
           }
         },
         {
@@ -48,8 +48,8 @@ export default {
           to:'/class/deadline',
           stroke: 'green',
           timeFrame:{
-            from: new Date(2021, 10, 4, 18, 0),
-            to: new Date(2021, 10, 4, 18, 0)
+            from: new Date(2021, new Date().getMonth(), new Date().getDate(), 24, 0),
+            to: new Date(2021, new Date().getMonth(), new Date().getDate(), 24, 0)
           }
         },
       ]
