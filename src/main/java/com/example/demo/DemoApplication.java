@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import challenge2.Main;
 import com.example.demo.modloader.ModLoader;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
