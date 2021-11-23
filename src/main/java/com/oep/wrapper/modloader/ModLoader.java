@@ -1,20 +1,22 @@
-package com.example.demo.modloader;
+package com.oep.wrapper.modloader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Enumeration;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Stream;
 
-public class ModLoader {
+@Component
+public class ModLoader implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(ModLoader.class);
     private static final String copiedDirectory = "static/";
@@ -22,12 +24,15 @@ public class ModLoader {
     private static final String infoFileName = "/info.txt";
     private static final String jarDirectory = "./jars";
 
-    public static void loadMods() throws IOException {
+    @Override
+    public void run(String... args) throws Exception {
+        logger.info("Loading OEP mods.");
         try (Stream<Path> paths = Files.walk(Paths.get(jarDirectory))) {
             paths
                     .filter(path -> path.toString().endsWith(".jar"))
                     .forEach(path -> extractJar(path.toString()));
         }
+        logger.info("Finished loading OEP mods.");
     }
 
     private static void extractJar(String source) {
